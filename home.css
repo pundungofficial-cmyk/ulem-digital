@@ -1,0 +1,139 @@
+#judul.hide {
+    animation: hideCover 1s forwards;
+  pointer-events: none;
+}
+
+@keyframes hideCover {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(1.08);
+        visibility: hidden;
+    }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+  background-color: #1E1E1E;
+  color: #F1F5F2;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Mengunci scroll layar di awal */
+body.no-scroll {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Styling Tombol & Loader */
+#openBtn {
+  position: relative;
+  width: 280px;
+  height: 65px;
+  border-radius: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(255, 120, 220, 0.35);
+  transition: all 0.4s ease;
+}
+
+#openBtn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 40px #ff7edb, 0 0 80px #ffb3ef;
+}
+
+#openBtn.loading .text {
+  opacity: 0;
+}
+
+.loader {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 26px;
+  height: 26px;
+  margin-left: -13px;
+  margin-top: -13px;
+  border: 3px solid white;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.3s linear infinite;
+}
+
+#openBtn.loading .loader {
+  display: block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.burst {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    animation: burstAnim 900ms ease-out forwards;
+}
+
+@keyframes burstAnim {
+    0% {
+        transform: translate(0,0) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(2);
+        opacity: 0;
+    }
+}
+
+.particle{
+    position:fixed;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:99999;
+    animation:explode 3.2s ease-out forwards;
+}
+
+@keyframes explode{
+    0%{
+        transform:translate(0,0) scale(0);
+        opacity:1;
+    }
+
+    100%{
+        transform:translate(var(--x),var(--y)) scale(1.8);
+        opacity:0;
+    }
+}
